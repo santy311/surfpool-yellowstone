@@ -1,11 +1,11 @@
-# surfpool-grpc
+# surfpool-yellowstone
 
 [Surfpool](https://github.com/solana-foundation/surfpool) packaged with the
 [Yellowstone gRPC](https://github.com/rpcpool/yellowstone-grpc) geyser plugin,
 published as a multi-arch image so consumers do not compile it.
 
 ```
-ghcr.io/santy311/surfpool-grpc:<tag>
+ghcr.io/santy311/surfpool-yellowstone:<tag>
 ```
 
 | Port | Purpose |
@@ -62,7 +62,7 @@ them into one tag. `workflow_dispatch` also works for a test build.
 ```yaml
 services:
   surfpool:
-    image: ghcr.io/santy311/surfpool-grpc:v1.5.0-geyser-7e97741
+    image: ghcr.io/santy311/surfpool-yellowstone:v1.5.0-geyser-7e97741
     command: ["start", "--host", "0.0.0.0", "--geyser-plugin-config", "/geyser/config.json"]
 ```
 
