@@ -38,9 +38,12 @@ than a build error, so the plugin is pinned to a commit proven against this
 surfpool version rather than to a tag that merely looks current. The pinned
 commit's parent is `958e1403` "bump to geyser 4.2.2".
 
-Sources are fetched as tarballs rather than cloned. Debian bookworm ships git
-2.39.5, which GitHub answers with a `401` auth challenge, and an unpinned clone
-silently tracks a moving branch — this build did exactly that for eight months.
+The builder runs on Debian trixie. Bookworm ships git 2.39.5, which GitHub now
+answers with a `401` auth challenge, so the fetch dies before anything builds.
+A tarball sidesteps git entirely but breaks the build, which calls
+`git_version!()` and needs a real `.git` — so the source is fetched by pinned
+commit into a shallow repository instead. The build this replaces cloned an
+unpinned branch and had tracked yellowstone master for eight months.
 
 ## Publishing a new version
 
